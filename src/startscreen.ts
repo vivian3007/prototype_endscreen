@@ -2,14 +2,15 @@ import * as PIXI from "pixi.js"
 import { settings } from "pixi.js"
 import { Button } from "./button"
 import { Game } from "./game"
+import { Endscreen } from "./endscreen"
 
 export class Startscreen extends PIXI.Graphics{
-    private game: Game
-    constructor(x: number, y: number, game: Game) {
+    private endscreen: Endscreen
+    constructor(x: number, y: number, endscreen: Endscreen) {
         super()
 
         console.log('startscreen!')
-        this.game = game
+        this.endscreen = endscreen
 
         const startscreenText = new PIXI.Text("Startscreen komt hier", {
             "align": "center",
@@ -18,9 +19,9 @@ export class Startscreen extends PIXI.Graphics{
         })
 
         startscreenText.anchor.set(0.5)
-        startscreenText.x = 400
+        startscreenText.x = 750
         startscreenText.y = 200
 
-        this.game.pixi.stage.addChild(startscreenText)
+        this.endscreen.pixi.stage.addChild(startscreenText)
     }
 }

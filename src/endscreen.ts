@@ -3,16 +3,15 @@ import { Button } from './button'
 import { Game } from './game'
 import { Startscreen } from './startscreen'
 
-export class Settings {
+export class Endscreen {
     private pixiWidth = innerWidth
     private pixiHeight = innerHeight
     private buttonRestart: Button
     private buttonStop: Button
-    private pixi: PIXI.Application
-    private game: Game
+    public pixi: PIXI.Application
 
     constructor() {
-        console.log("startmenu")
+        console.log("endscreen!")
 
         this.pixi = new PIXI.Application({ width: this.pixiWidth, height: this.pixiHeight, backgroundColor: 0x00FF00 });
         document.body.appendChild(this.pixi.view)
@@ -37,16 +36,17 @@ export class Settings {
         this.buttonRestart.destroy()
         this.buttonStop.destroy()
 
-         // destroy game and make a new one
-         new Game()
+         // destroy game and endscreen and make a new game
+         new Game(this)
     }
 
     private onClickStop(){
         this.buttonRestart.destroy()
         this.buttonStop.destroy()
 
-        new Startscreen(300, 100, this.game)
+        //destroy game and endscreen and make a new startscreen
+        new Startscreen(300, 100, this)
     }
 }
 
-new Settings()
+new Endscreen()

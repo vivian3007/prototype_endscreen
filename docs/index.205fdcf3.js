@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"lW6nP":[function(require,module,exports) {
+})({"hhz9s":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "c4b48ce94d7f7924";
+module.bundle.HMR_BUNDLE_ID = "21537ec3205fdcf3";
 function _toConsumableArray(arr) {
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
@@ -513,7 +513,7 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"5blfu":[function(require,module,exports) {
+},{}],"2wKV3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Endscreen", ()=>Endscreen
@@ -545,18 +545,19 @@ class Endscreen {
     onClickRestart() {
         this.buttonRestart.destroy();
         this.buttonStop.destroy();
-        // destroy game and make a new one
-        new _game.Game();
+        // destroy game and endscreen and make a new game
+        new _game.Game(this);
     }
     onClickStop() {
         this.buttonRestart.destroy();
         this.buttonStop.destroy();
-        new _startscreen.Startscreen(300, 100, this.game);
+        //destroy game and endscreen and make a new startscreen
+        new _startscreen.Startscreen(300, 100, this);
     }
 }
 new Endscreen();
 
-},{"pixi.js":"dsYej","./button":"hHDeU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./game":"edeGs","./startscreen":"lIiHt"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./button":"hHDeU","./game":"edeGs","./startscreen":"lIiHt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37089,8 +37090,9 @@ parcelHelpers.export(exports, "Game", ()=>Game
 );
 var _pixiJs = require("pixi.js");
 class Game extends _pixiJs.Graphics {
-    constructor(){
+    constructor(endscreen){
         super();
+        this.endscreen = endscreen;
         console.log('game!');
         const gameText = new _pixiJs.Text("De nieuwe game komt hier", {
             "align": "center",
@@ -37098,9 +37100,9 @@ class Game extends _pixiJs.Graphics {
             "fontSize": 50
         });
         gameText.anchor.set(0.5);
-        gameText.x = 400;
+        gameText.x = 750;
         gameText.y = 200;
-        this.pixi.stage.addChild(gameText);
+        this.endscreen.pixi.stage.addChild(gameText);
     }
 }
 
@@ -37111,22 +37113,22 @@ parcelHelpers.export(exports, "Startscreen", ()=>Startscreen
 );
 var _pixiJs = require("pixi.js");
 class Startscreen extends _pixiJs.Graphics {
-    constructor(x, y, game){
+    constructor(x, y, endscreen){
         super();
         console.log('startscreen!');
-        this.game = game;
+        this.endscreen = endscreen;
         const startscreenText = new _pixiJs.Text("Startscreen komt hier", {
             "align": "center",
             "fontFamily": "Comic Sans MS",
             "fontSize": 50
         });
         startscreenText.anchor.set(0.5);
-        startscreenText.x = 400;
+        startscreenText.x = 750;
         startscreenText.y = 200;
-        this.game.pixi.stage.addChild(startscreenText);
+        this.endscreen.pixi.stage.addChild(startscreenText);
     }
 }
 
-},{"pixi.js":"dsYej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["lW6nP","5blfu"], "5blfu", "parcelRequirea0e5")
+},{"pixi.js":"dsYej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hhz9s","2wKV3"], "2wKV3", "parcelRequirea0e5")
 
-//# sourceMappingURL=index.4d7f7924.js.map
+//# sourceMappingURL=index.205fdcf3.js.map
